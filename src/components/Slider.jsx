@@ -2,6 +2,7 @@ import React from 'react'
 import CardSlider from './CardSlider'
 
 const Slider = ({ movies }) => {
+
     const getMoviesFromRange = (from, to) => {
         return movies.slice(from, to)
     }
@@ -17,5 +18,7 @@ const Slider = ({ movies }) => {
         </div>
     )
 }
-
 export default Slider
+
+
+

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
-import backgroudImages from "../assets/home.jpg"
+import backgroudImages from "../assets/85019.jpg"
 import MoviesLogo from "../assets/homeTitle.webp"
 import { FaPlay } from "react-icons/fa"
 import { AiOutlineAlipayCircle } from "react-icons/ai"
