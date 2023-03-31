@@ -14,7 +14,7 @@ import Slider from '../components/Slider';
 import NotAvailable from '../components/NotAvailable';
 import SelectGenre from '../components/SelectGenre';
 
-const Movies = () => {
+const TvShows = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
     const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
@@ -29,16 +29,15 @@ const Movies = () => {
     useEffect(() => {
         if (genresLoaded) {
             dispatch(fetchMovies({
-                type: "movies",
+                type: "tv",
             }));
         }
-    }, [genresLoaded, dispatch]);
+    }, [genresLoaded]);
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+    useEffect(() => { // Added an effect to remove the scroll event listener when the component unmounts
         return () => {
             window.removeEventListener('scroll', handleScroll);
-        };
+        }
     }, []);
 
     const handleScroll = () => {
@@ -55,14 +54,14 @@ const Movies = () => {
                 <NavBar isScrolled={isScrolled} />
             </div>
             <div className='data'>
-                <SelectGenre genres={genres} type="movie" />
+                <SelectGenre genres={genres} type="tv" />
                 {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
             </div>
         </Container>
     );
 };
 
-export default Movies;
+export default TvShows;
 
 const Container = styled.div`
     background-color: #181818;

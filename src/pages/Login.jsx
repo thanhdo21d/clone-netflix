@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import { firebaseAuth } from '../Utils/firebase-config'
 import { useNavigate } from 'react-router-dom';
 import BackgroudImages from '../components/BackgroudImages'
+import Footer from '../components/Footer'
 
 const Login = () => {
 
@@ -37,15 +38,16 @@ const Login = () => {
                         <div className='title'>
                             <h3> Login</h3>
                         </div>
-                        <div className='container flex column'>
+                        <form className='container flex column'>
                             <input type="email" placeholder='Email Address' name='email' value={formValue.email}
                                 onChange={(e) => setFormValue({ ...formValue, [e.target.name]: e.target.value })} />
                             <input type="password" placeholder='Password' name='password' value={formValue.password}
                                 onChange={(e) => setFormValue({ ...formValue, [e.target.name]: e.target.value })} />
                             <button onClick={handleLogin}>Log In</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
+                <Footer />
             </div>
         </Container>
     )
@@ -91,6 +93,12 @@ const Container = styled.div`
                         font-size: 1.05rem;
 
                     }
+                    label{
+                        color: #b3b3b3;
+                        font-size: 13px;
+                        font-weight: 400;
+                    }
+                   
                 }
             }
         }

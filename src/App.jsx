@@ -4,6 +4,8 @@ import Login from './pages/Login'
 import SingUp from './pages/SingUp'
 import Nefix from './pages/Nefix'
 import Player from './pages/Player'
+import Movies from './pages/Movies'
+import TvShows from './pages/TVshows'
 
 export default function App() {
   return (
@@ -13,7 +15,8 @@ export default function App() {
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Signup" element={<SingUp />} />
         <Route exact path="player" element={<Player />} />
-
+        <Route exact path='/movies' element={<Movies />} />
+        <Route exact path='tv' element={<TvShows />} />
 
       </Routes>
     </BrowserRouter>

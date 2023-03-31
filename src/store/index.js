@@ -1,8 +1,6 @@
 import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_KEY, TMBP_BASE_URL } from "../Utils/constants";
 import axios from "axios";
-import { async } from "@firebase/util";
-
 const initialState = {
     movies: [],
     genresLoaded: false,
@@ -33,13 +31,12 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
 const getRawData = async (api, genres, paging) => {
     const moviesArray = [];
     for (let i = 1; moviesArray.length < 60 && i < 10; i++) {
-        const { data: { results } } = await axios.get(`${api}${paging ? `&page=${i}` : " "}`)
+        const { data: { results } } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`)
         createArrayFromRawData(results, moviesArray, genres)
     }
     return moviesArray;
-
-
 }
+
 
 
 export const fetchMovies = createAsyncThunk("netflix/trending", async ({ type }, thunkApi) => {
@@ -51,6 +48,18 @@ export const fetchMovies = createAsyncThunk("netflix/trending", async ({ type },
     // return getRawdata(`${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genres}`)
 })
 
+// 
+export const fetchDataByGenre = createAsyncThunk("netflix/moviesByGenres", async ({ genre, type }, thunkApi) => {
+    const { netflix: { genres } } = thunkApi.getState();
+    const data = getRawData(`${TMBP_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genres}`, genres);
+
+    return data
+
+    // return getRawdata(`${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genres}`)
+})
+
+// 
+
 const NetflixSlice = createSlice({
     name: "Netflix",
     initialState,
@@ -61,6 +70,10 @@ const NetflixSlice = createSlice({
             state.genresLoaded = true;
         });
         builder.addCase(fetchMovies.fulfilled, (state, action) => {
+            state.movies = action.payload;
+            state.genresLoaded = true;
+        });
+        builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
             state.movies = action.payload;
             state.genresLoaded = true;
         });

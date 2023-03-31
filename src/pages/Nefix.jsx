@@ -27,7 +27,7 @@ const Nefix = (props) => {
         if (genresLoaded) dispatch(fetchMovies({
             type: "all",
         }))
-    }, [genresLoaded, dispatch])
+    }, [genresLoaded])
 
     return (
         <Container>

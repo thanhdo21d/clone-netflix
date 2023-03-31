@@ -4,10 +4,10 @@ import styled from "styled-components"
 import BackgroudImages from '../components/BackgroudImages'
 import Header from '../components/Header'
 import { firebaseAuth } from '../Utils/firebase-config'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const SingUp = () => {
     const [showPassword, setShowpassword] = useState(false);
-
+    const navigate = useNavigate()
     const [fromVlaue, setFromValue] = useState({
         email: "",
         password: "",
@@ -21,7 +21,7 @@ const SingUp = () => {
         }
     }
     onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (currentUser) Navigate("/");
+        if (currentUser) navigate("/");
     })
 
     return (
@@ -34,8 +34,8 @@ const SingUp = () => {
                 <Header login />
                 <div className='body flex column a-center j-center'>
                     <div className='text flex column'>
-                        <h1> Unlimikted movies , TV shows and more</h1>
-                        <h4> Watch anywhere . Cancel anytime.</h4>
+                        <h1> Unlimikted Ovies , TV Shows And More</h1>
+                        <h4> Watch Anywhere . Cancel Anytime.</h4>
                         <h6>
                             Ready to wacth? Enter your email to create or restart membership
                         </h6>
