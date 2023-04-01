@@ -6,7 +6,9 @@ import { firebaseAuth } from '../Utils/firebase-config'
 import { useNavigate } from 'react-router-dom';
 import BackgroudImages from '../components/BackgroudImages'
 import Footer from '../components/Footer'
+import { fadeIn } from './variants'
 
+import { motion } from 'framer-motion'
 const Login = () => {
 
     const [formValue, setFormValue] = useState({
@@ -30,9 +32,9 @@ const Login = () => {
     return (
         <Container>
             <BackgroudImages />
-            <div className='content'>
+            <motion.div className='content'>
                 <Header />
-                <div className='form-container flex column a-center j-center'>
+                <motion.div variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.3 }} className='form-container flex column a-center j-center'>
                     <div className='form flex column a-center j-center'>
 
                         <div className='title'>
@@ -46,9 +48,9 @@ const Login = () => {
                             <button onClick={handleLogin}>Log In</button>
                         </form>
                     </div>
-                </div>
+                </motion.div>
                 <Footer />
-            </div>
+            </motion.div>
         </Container>
     )
 }

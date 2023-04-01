@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import backgroud from '../assets/login.jpg'
+import backgroud from '../assets/backgroundNet.jpeg'
 const BackgroudImages = () => {
     return (
         <Container>

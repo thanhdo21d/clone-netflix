@@ -9,6 +9,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { BiChevronDown } from "react-icons/bi"
 
 
+
 const Card = ({ movieData, islike = false }) => {
     const [isHovered, setIsHovered] = useState(false)
     const navigate = useNavigate()

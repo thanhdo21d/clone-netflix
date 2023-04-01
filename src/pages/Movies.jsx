@@ -13,6 +13,9 @@ import { fetchMovies, getGenres } from '../store';
 import Slider from '../components/Slider';
 import NotAvailable from '../components/NotAvailable';
 import SelectGenre from '../components/SelectGenre';
+import { fadeIn } from './variants'
+
+import { motion } from 'framer-motion'
 
 const Movies = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -54,10 +57,10 @@ const Movies = () => {
             <div className='navbar'>
                 <NavBar isScrolled={isScrolled} />
             </div>
-            <div className='data'>
+            <motion.div variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.3 }} className='data'>
                 <SelectGenre genres={genres} type="movie" />
                 {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
-            </div>
+            </motion.div>
         </Container>
     );
 };

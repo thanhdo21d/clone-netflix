@@ -6,6 +6,7 @@ import Nefix from './pages/Nefix'
 import Player from './pages/Player'
 import Movies from './pages/Movies'
 import TvShows from './pages/TVshows'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route exact path='tv' element={<TvShows />} />
 
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

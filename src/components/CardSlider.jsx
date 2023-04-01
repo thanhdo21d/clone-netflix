@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react'
 import { AiOutlineAlert, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import styled from 'styled-components'
 import Card from './Card'
+import { fadeIn } from '../pages/variants'
 
+import { motion } from 'framer-motion'
 const CardSlider = ({ data, title }) => {
     const [showControls, setShowControls] = useState(false)
     const [sliderPosition, setSliderPosition] = useState(0)
@@ -27,7 +29,7 @@ const CardSlider = ({ data, title }) => {
             onMouseLeave={() => setShowControls(false)}
         >
             <h1>{title}</h1>
-            <div className='wrapper'>
+            <motion.div variants={fadeIn('up', 0.75)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.3 }} className='wrapper'>
                 <div className={`slider-action left ${!showControls ? "none" : " "} flex j-center a-center`}>
                     <AiOutlineLeft onClick={() => handleDirecion("left")} />
                 </div>
@@ -43,7 +45,7 @@ const CardSlider = ({ data, title }) => {
                 <div className={`slider-action right ${!showControls ? "none" : " "} flex j-center a-center`}>
                     <AiOutlineRight onClick={() => handleDirecion("right")} />
                 </div>
-            </div>
+            </motion.div>
 
 
         </Container>

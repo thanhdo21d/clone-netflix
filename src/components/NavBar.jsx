@@ -64,6 +64,9 @@ const NavBar = ({ isScrolled }) => {
                     <button onClick={() => signOut(firebaseAuth)}>
                         <FaPowerOff />
                     </button>
+                    <button>
+                        <i style={{ color: 'white', fontSize: '22px', paddingLeft: '20px', paddingBottom: '4px' }} className="fa fa-user-circle"> </i>
+                    </button>
                 </div>
             </nav>
         </Container >

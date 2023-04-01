@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
-import backgroudImages from "../assets/85019.jpg"
+import backgroudImages from "../assets/wallpaperflare.com_wallpaper.jpg"
 import MoviesLogo from "../assets/homeTitle.webp"
 import { FaPlay } from "react-icons/fa"
 import { AiOutlineAlipayCircle } from "react-icons/ai"
+import { fadeIn } from './variants'
 
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,7 +34,7 @@ const Nefix = (props) => {
     return (
         <Container>
             <NavBar isScrolled={isScrolled} />
-            <div className='hero'>
+            <motion.div variants={fadeIn('up', 0.25)} initial="hidden" whileInView={'show'} viewport={{ once: false, amount: 0.3 }} className='hero'>
                 <img src={backgroudImages} alt="backgroudImages" className='backgound-image' />
                 <div className='container'>
                     <div className='logo'>
@@ -46,7 +48,7 @@ const Nefix = (props) => {
 
                     </div>
                 </div>
-            </div>
+            </motion.div>
             <Slider movies={movies} />
         </Container>
     )
